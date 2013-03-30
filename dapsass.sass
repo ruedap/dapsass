@@ -1,0 +1,274 @@
+
+// =============================================================================
+// compass (required)
+// =============================================================================
+
+@import compass
+$experimental-support-for-svg: true
+$base-font-size: 14px
+$base-line-height: 20px
++establish-baseline
+
+
+// =============================================================================
+// defaults
+// =============================================================================
+
+*, *:before, *:after
+  +box-sizing(border-box)
+
+body
+  -webkit-text-size-adjust: 100%
+
+img
+  vertical-align: bottom
+
+// for clickable SVG
+object
+  pointer-events: none
+
+p
+  +rhythm(1, 0, 0, 1)
+
+
+// =============================================================================
+// variables
+// =============================================================================
+
+// Google Web Fonts
+$GWF-SS-OPEN-SANS: 'Open Sans'
+$GWF-SS-ROPA-SANS: 'Ropa Sans'
+$GWF-SS-WIRE-ONE: 'Wire One'
+$GWF-SS-RALEWAY: 'Raleway'
+$GWF-SS-ABEL: 'Abel'
+$GWF-SS-FUGAZ-ONE: 'Fugaz One'
+$GWF-SS-SQUADA-ONE: 'Squada One'
+$GWF-S-SORTS-MILL-GOUDY: 'Sorts Mill Goudy'
+$GWF-S-PT-SERIF: 'PT Serif'
+$GWF-S-PATUA-ONE: 'Patua One'
+$GWF-S-DROID-SERIF: 'Droid Serif'
+$GWF-S-CRIMSON-TEXT: 'Crimson Text'
+$GWF-S-CINZEL: 'Cinzel'
+
+// Font Family
+$FF-HELVETICA: 'Helvetica Neue', Helvetica, Arial
+$FF-PALATINO: Palatino, 'Palatino Linotype', 'Book Antiqua'
+$FF-TIMES: 'Times New Roman', Times
+$FF-MEIRYO: 'メイリオ', Meiryo
+$FF-HIRAGO3: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro W3', 'Hiragino Kaku Gothic ProN'
+$FF-HIRAMIN3: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro W3', 'Hiragino Mincho ProN'
+$FF-MSPGO: 'MS PGothic'
+$FF-MSMIN: 'ＭＳ 明朝'
+
+$BASE-FF-SANS: 'Lucida Grande', Verdana, $FF-HELVETICA
+$BASE-FF-SERIF: Georgia, $FF-TIMES
+
+// for English
+$FF-SANS: $BASE-FF-SANS, sans-serif
+$FF-SERIF: $BASE-FF-SERIF, serif
+$FF-PALA: $FF-PALATINO, $FF-SERIF
+$FF-MONO: Menlo, Consolas, 'Courier New', Monaco, monospace
+
+// for Japanese
+$FF-GOTHIC: $BASE-FF-SANS, $FF-MEIRYO, $FF-HIRAGO3, $FF-MSPGO, sans-serif
+$FF-MINCHO: $GWF-S-PT-SERIF, $BASE-FF-SERIF, $FF-HIRAMIN3, $FF-MSMIN, serif
+$FF-PALAMIN: $FF-PALA, $FF-MINCHO
+
+
+// =============================================================================
+// mixins
+// =============================================================================
+
+// Media Queries
+$_target: "only screen and"
+$MQ-PORTRAIT-PHONES:   "#{$_target} (max-width: 320px)"
+$MQ-LANDSCAPE-PHONES:  "#{$_target} (min-width: 321px) and (max-width: 767px)"
+$MQ-PORTRAIT-TABLETS:  "#{$_target} (min-width: 768px) and (max-width: 979px)"
+$MQ-LANDSCAPE-TABLETS: "#{$_target} (min-width: 980px) and (max-width: 1199px)"
+$MQ-LARGE-DISPLAY:     "#{$_target} (min-width: 1200px) and (max-width: 1599px)"
+$MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
+
+// excludes iPhone and iPad
+// $MQ-PHONES-TO-TABLETS: "#{$_target} (min-width: 481px) and (max-width: 767px)"
+// $MQ-LANDSCAPE-PHONES:  "#{$_target} (min-width: 321px) and (max-width: 480px)"
+
+=media-queries($media: phone, $orientation: portrait)
+  @if $media == phone
+    @if $orientation == portrait
+      @media #{$MQ-PORTRAIT-PHONES}
+        @content
+    @else if $orientation == landscape
+      @media #{$MQ-LANDSCAPE-PHONES}
+        @content
+  @else if $media == tablet
+    @if $orientation == portrait
+      @media #{$MQ-PORTRAIT-TABLETS}
+        @content
+    @else if $orientation == landscape
+      @media #{$MQ-LANDSCAPE-TABLETS}
+        @content
+  @else if $media == large
+    @media #{$MQ-LARGE-DISPLAY}
+      @content
+  @else if $media == x-large
+    @media #{$MQ-X-LARGE-DISPLAY}
+      @content
+
+// shorthand for media-queries
+=mq($attr, $value1, $value2, $value3, $value4, $value5, $value6)
+  +media-queries(phone, portrait)
+    #{$attr}: $value1
+  +media-queries(phone, landscape)
+    #{$attr}: $value2
+  +media-queries(tablet, portrait)
+    #{$attr}: $value3
+  +media-queries(tablet, landscape)
+    #{$attr}: $value4
+  +media-queries(large)
+    #{$attr}: $value5
+  +media-queries(x-large)
+    #{$attr}: $value6
+
+
+=dap-triangle($triangle-size, $triangle-color, $triangle-direction)
+  content: ''
+  display: block
+  width: 0
+  height: 0
+  border: solid $triangle-size
+  @if $triangle-direction == top
+    border-color: $triangle-color transparent transparent transparent
+  @if $triangle-direction == bottom
+    border-color: transparent transparent $triangle-color transparent
+  @if $triangle-direction == left
+    border-color: transparent transparent transparent $triangle-color
+  @if $triangle-direction == right
+    border-color: transparent $triangle-color transparent transparent
+
+
+=dap-gradient-hr($c: #000)
+  +background-image(linear-gradient(left, rgba($c, 0), rgba($c, 0.1), rgba($c, 0)))
+  display: block
+  height: 1px
+  border: 0
+  margin: 1em 0
+  padding: 0
+
+
+// =============================================================================
+// keyframes
+// =============================================================================
+
++keyframes(infinite-turn)
+  0%
+    +transform-origin(center, center)
+    +transform(rotate(0deg))
+  100%
+    +transform-origin(center, center)
+    +transform(rotate(1turn))
+
+=animation-icon-spinner($speed: 1.0s)
+  +animation(infinite-turn $speed infinite steps(8, start))
+
+
++keyframes(sparkle-x)
+  0%
+    +transform-origin(center, center)
+    +transform(rotateX(0deg))
+  100%
+    +transform-origin(center, center)
+    +transform(rotateX(1turn))
+
+
++keyframes(sparkle-y)
+  0%
+    +transform-origin(center, center)
+    +transform(rotateY(0deg))
+  100%
+    +transform-origin(center, center)
+    +transform(rotateY(1turn))
+
+=animation-sparkle-y($duration: 0.4s, $delay: 0)
+  +animation(sparkle-y $duration ease $delay)
+
+
++keyframes(tap-effect-1)
+  0%
+    +transform(scale(0.3, 0.3))
+  40%
+    +transform(scale(1.2, 1.2))
+  60%
+    +transform(scale(1, 1))
+  80%
+    +transform(scale(1.1, 1.1))
+  100%
+    +transform(scale(1, 1))
+
+
++keyframes(ruedap-logo)
+  0%
+    +transform-origin(center, center)
+    +transform(rotate(0deg))
+  100%
+    +transform-origin(center, center)
+    +transform(rotate(2turn))
+
+
++keyframes(light-speed-in)
+  0%
+    +transform(translateX(120%) skewX(-30deg))
+    +opacity(0)
+    +animation-timing-function(ease-in-out)
+  60%
+    +transform(translateX(-20%) skewX(30deg))
+    +opacity(1)
+    +animation-timing-function(ease-in-out)
+  80%
+    +transform(translateX(0%) skewX(-15deg))
+    +opacity(1)
+    +animation-timing-function(ease-in-out)
+  100%
+    +transform(translateX(0%) skewX(0deg))
+    +opacity(1)
+    +animation-timing-function(ease-in-out)
+
+=animation-light-speed-in
+  +animation(light-speed-in 1s ease-out 0 both)
+
+
++keyframes(hinge)
+  0%
+    +transform-origin(top, left)
+    +transform(rotate(0))
+    +animation-timing-function(ease-in-out)
+  20%, 60%
+    +transform-origin(top, left)
+    +transform(rotate(80deg))
+    +animation-timing-function(ease-in-out)
+  40%
+    +transform-origin(top, left)
+    +transform(rotate(60deg))
+    +animation-timing-function(ease-in-out)
+  80%
+    +transform-origin(top, left)
+    +transform(rotate(60deg) translateY(0))
+    +animation-timing-function(ease-in-out)
+    +opacity(1)
+  100%
+    +transform-origin(top, left)
+    +transform(translateY(700px))
+    +opacity(0)
+
+=animation-hinge
+  +animation(hinge 2s both)
+
+
+// =============================================================================
+// transitions
+// =============================================================================
+
+=transition-rotate-scaleup-hover
+  +transition(all 0.4s ease)
+  &:hover
+    +transform(rotate(1turn) scale(1.2, 1.2))
+
