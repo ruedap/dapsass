@@ -218,41 +218,36 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
   0%
     +transform(translateX(120%) skewX(-30deg))
     +opacity(0)
-    +animation-timing-function(ease-in-out)
   60%
     +transform(translateX(-20%) skewX(30deg))
     +opacity(1)
-    +animation-timing-function(ease-in-out)
   80%
     +transform(translateX(0%) skewX(-15deg))
     +opacity(1)
-    +animation-timing-function(ease-in-out)
   100%
     +transform(translateX(0%) skewX(0deg))
     +opacity(1)
-    +animation-timing-function(ease-in-out)
 
 =animation-light-speed-in
-  +animation(light-speed-in 1s ease-out 0 both)
+  +animation(light-speed-in 1s ease-in-out 0s both)
 
 
 +keyframes(hinge)
   0%
     +transform-origin(top, left)
     +transform(rotate(0))
-    +animation-timing-function(ease-in-out)
+    +opacity(1)
   20%, 60%
     +transform-origin(top, left)
     +transform(rotate(80deg))
-    +animation-timing-function(ease-in-out)
+    +opacity(1)
   40%
     +transform-origin(top, left)
     +transform(rotate(60deg))
-    +animation-timing-function(ease-in-out)
+    +opacity(1)
   80%
     +transform-origin(top, left)
     +transform(rotate(60deg) translateY(0))
-    +animation-timing-function(ease-in-out)
     +opacity(1)
   100%
     +transform-origin(top, left)
@@ -260,7 +255,7 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
     +opacity(0)
 
 =animation-hinge
-  +animation(hinge 2s both)
+  +animation(hinge 2s ease-in-out 0s both)
 
 
 // =============================================================================
