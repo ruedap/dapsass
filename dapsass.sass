@@ -258,6 +258,34 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
   +animation(hinge 2s ease-in-out 0s both)
 
 
++keyframes(wiggle)
+  0%
+    +skewX(9deg)
+  10%
+    +skewX(-8deg)
+  20%
+    +skewX(7deg)
+  30%
+    +skewX(-6deg)
+  40%
+    +skewX(5deg)
+  50%
+    +skewX(-4deg)
+  60%
+    +skewX(3deg)
+  70%
+    +skewX(-2deg)
+  80%
+    +skewX(1deg)
+  90%
+    +skewX(0deg)
+  100%
+    +skewX(0deg)
+
+=animation-wiggle
+  +animation(wiggle 2s ease-in 0s both)
+
+
 // =============================================================================
 // transitions
 // =============================================================================
