@@ -5,9 +5,6 @@
 
 @import compass
 $experimental-support-for-svg: true
-$base-font-size: 14px
-$base-line-height: 20px
-+establish-baseline
 
 
 // =============================================================================
@@ -26,9 +23,6 @@ img
 // for clickable SVG
 object
   pointer-events: none
-
-p
-  +rhythm(1, 0, 0, 1)
 
 
 // =============================================================================
@@ -76,10 +70,9 @@ $FF-PALAMIN: $FF-PALA, $FF-MINCHO
 
 
 // =============================================================================
-// mixins
+// media queries
 // =============================================================================
 
-// Media Queries
 $_target: "only screen and"
 $MQ-PORTRAIT-PHONES:   "#{$_target} (max-width: 320px)"
 $MQ-LANDSCAPE-PHONES:  "#{$_target} (min-width: 321px) and (max-width: 767px)"
@@ -129,6 +122,39 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
   +media-queries(x-large)
     #{$attr}: $value6
 
+
+// =============================================================================
+// rem
+// =============================================================================
+
+=establish-rem
+  html, body
+    font-size: 62.5%
+
+// https://gist.github.com/bitmanic/1134548
+=rem($property, $px_values)
+  $baseline_rem: 10px / 1rem
+  #{$property}: $px_values
+  @if type-of($px_values) == "number"
+    #{$property}: $px_values / $baseline_rem
+  @else
+    $rem_values: ()
+    @each $value in $px_values
+      @if $value == 0
+        $rem_values: append($rem_values, $value)
+      @else
+        $rem_values: append($rem_values, $value / $baseline_rem)
+    #{$property}: $rem_values
+
+// shorthand for font-size
+=fs($px, $line-height: null)
+  +rem('font-size', $px)
+  line-height: $line-height
+
+
+// =============================================================================
+// mixins
+// =============================================================================
 
 =dap-triangle($triangle-size, $triangle-color, $triangle-direction)
   content: ''
