@@ -87,7 +87,7 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
 // $MQ-PHONES-TO-TABLETS: "#{$_target} (min-width: 481px) and (max-width: 767px)"
 // $MQ-LANDSCAPE-PHONES:  "#{$_target} (min-width: 321px) and (max-width: 480px)"
 
-=media-queries($media: phone, $orientation: portrait)
+=x-media-queries($media: phone, $orientation: portrait)
   @if $media == phone
     @if $orientation == portrait
       @media #{$MQ-PORTRAIT-PHONES}
@@ -110,18 +110,18 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
       @content
 
 // shorthand for media-queries
-=mq($attr, $value1, $value2, $value3, $value4, $value5, $value6)
-  +media-queries(phone, portrait)
+=x-mq($attr, $value1, $value2, $value3, $value4, $value5, $value6)
+  +x-media-queries(phone, portrait)
     #{$attr}: $value1
-  +media-queries(phone, landscape)
+  +x-media-queries(phone, landscape)
     #{$attr}: $value2
-  +media-queries(tablet, portrait)
+  +x-media-queries(tablet, portrait)
     #{$attr}: $value3
-  +media-queries(tablet, landscape)
+  +x-media-queries(tablet, landscape)
     #{$attr}: $value4
-  +media-queries(large)
+  +x-media-queries(large)
     #{$attr}: $value5
-  +media-queries(x-large)
+  +x-media-queries(x-large)
     #{$attr}: $value6
 
 
@@ -131,12 +131,12 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
 
 $REM-BASELINE-PX: 10px
 
-@function rem($px-value)
+@function x-rem($px-value)
   $_base:  $REM-BASELINE-PX / 1rem
   @return $px-value / $_base
 
 // https://gist.github.com/bitmanic/1134548
-=rem($property, $px-values)
+=x-rem($property, $px-values)
   $baseline-rem: $REM-BASELINE-PX / 1rem
   #{$property}: $px-values
   @if type-of($px-values) == "number"
@@ -151,31 +151,31 @@ $REM-BASELINE-PX: 10px
     #{$property}: $rem-values
 
 // shorthand for font-size and line-height
-=fs($px, $line-height: null)
-  +rem('font-size', $px)
+=x-fs($px, $line-height: null)
+  +x-rem('font-size', $px)
   line-height: $line-height
 
-=establish-rem
+=x-establish-rem
   html
     font-size: 62.5%
     line-height: 2.0
 
-=establish-rem-responsive
-  +establish-rem
+=x-establish-rem-responsive
+  +x-establish-rem
   html
-    +mq('line-height', 1.5, 1.5, 1.8, 1.8, 2.0, 2.0)
+    +x-mq('line-height', 1.5, 1.5, 1.8, 1.8, 2.0, 2.0)
 
 
 // =============================================================================
 // mixins
 // =============================================================================
 
-=mp0
+=x-mp0
   margin: 0
   padding: 0
 
 
-=dap-triangle($triangle-size, $triangle-color, $triangle-direction)
+=x-triangle($triangle-size, $triangle-color, $triangle-direction)
   content: ''
   display: block
   width: 0
@@ -191,7 +191,7 @@ $REM-BASELINE-PX: 10px
     border-color: transparent $triangle-color transparent transparent
 
 
-=dap-gradient-hr($c: #000)
+=x-gradient-hr($c: #000)
   +background-image(linear-gradient(left, rgba($c, 0), rgba($c, 0.1), rgba($c, 0)))
   display: block
   height: 1px
@@ -212,7 +212,7 @@ $REM-BASELINE-PX: 10px
     +transform-origin(center, center)
     +transform(rotate(1turn))
 
-=animation-icon-spinner($speed: 1.0s)
+=x-animation-icon-spinner($speed: 1.0s)
   +animation(infinite-turn $speed infinite steps(8, start))
 
 
@@ -233,7 +233,7 @@ $REM-BASELINE-PX: 10px
     +transform-origin(center, center)
     +transform(rotateY(1turn))
 
-=animation-sparkle-y($duration: 0.4s, $delay: 0)
+=x-animation-sparkle-y($duration: 0.4s, $delay: 0)
   +animation(sparkle-y $duration ease $delay)
 
 
@@ -273,7 +273,7 @@ $REM-BASELINE-PX: 10px
     +transform(translateX(0%) skewX(0deg))
     +opacity(1)
 
-=animation-light-speed-in
+=x-animation-light-speed-in
   +animation(light-speed-in 1s ease-in-out 0s both)
 
 
@@ -299,7 +299,7 @@ $REM-BASELINE-PX: 10px
     +transform(translateY(700px))
     +opacity(0)
 
-=animation-hinge
+=x-animation-hinge
   +animation(hinge 2s ease-in-out 0s both)
 
 
@@ -327,7 +327,7 @@ $REM-BASELINE-PX: 10px
   100%
     +skewX(0deg)
 
-=animation-wiggle
+=x-animation-wiggle
   +animation(wiggle 2s ease-in 0s both)
 
 
@@ -335,7 +335,7 @@ $REM-BASELINE-PX: 10px
 // transitions
 // =============================================================================
 
-=transition-rotate-scaleup-hover
+=x-transition-rotate-scaleup-hover
   +transition(all 0.4s ease)
   &:hover
     +transform(rotate(1turn) scale(1.2, 1.2))
