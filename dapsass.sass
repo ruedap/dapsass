@@ -129,26 +129,22 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
 // rem
 // =============================================================================
 
-$REM-BASELINE-PX: 10px
+$X-REM-BASELINE: 10px / 1rem
 
 @function x-rem($px-value)
-  $_base:  $REM-BASELINE-PX / 1rem
-  @return $px-value / $_base
+  @return $px-value / $X-REM-BASELINE
 
-// https://gist.github.com/bitmanic/1134548
 =x-rem($property, $px-values)
-  $baseline-rem: $REM-BASELINE-PX / 1rem
-  #{$property}: $px-values
-  @if type-of($px-values) == "number"
-    #{$property}: $px-values / $baseline-rem
-  @else
-    $rem-values: ()
-    @each $value in $px-values
-      @if $value == 0
-        $rem-values: append($rem-values, $value)
-      @else
-        $rem-values: append($rem-values, $value / $baseline-rem)
-    #{$property}: $rem-values
+  $_px: ()
+  $_rem: ()
+  @each $value in $px-values
+    $_px: append($_px, $value)
+    @if $value == auto or $value == 0
+      $_rem: append($_rem, $value)
+    @else
+      $_rem: append($_rem, $value / $X-REM-BASELINE)
+  #{$property}: $_px
+  #{$property}: $_rem
 
 // shorthand for font-size and line-height
 =x-fs($px, $line-height: null)
