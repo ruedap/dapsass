@@ -131,7 +131,7 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
       @content
 
 // shorthand for media-queries
-=x-mq($attr, $value1, $value2, $value3, $value4, $value5, $value6)
+=x-mq($attr, $value1: null, $value2: null, $value3: null, $value4: null, $value5: null, $value6: null)
   +x-media-queries(phone, portrait)
     #{$attr}: $value1
   +x-media-queries(phone, landscape)
