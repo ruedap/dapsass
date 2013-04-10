@@ -108,16 +108,26 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
 // $MQ-PHONES-TO-TABLETS: "#{$_target} (min-width: 481px) and (max-width: 767px)"
 // $MQ-LANDSCAPE-PHONES:  "#{$_target} (min-width: 321px) and (max-width: 480px)"
 
-=x-media-queries($media: phone, $orientation: portrait)
+=x-media-queries($media: phone, $orientation: both)
   @if $media == phone
-    @if $orientation == portrait
+    @if $orientation == both
+      @media #{$MQ-PORTRAIT-PHONES}
+        @content
+      @media #{$MQ-LANDSCAPE-PHONES}
+        @content
+    @else if $orientation == portrait
       @media #{$MQ-PORTRAIT-PHONES}
         @content
     @else if $orientation == landscape
       @media #{$MQ-LANDSCAPE-PHONES}
         @content
   @else if $media == tablet
-    @if $orientation == portrait
+    @if $orientation == both
+      @media #{$MQ-PORTRAIT-TABLETS}
+        @content
+      @media #{$MQ-LANDSCAPE-TABLETS}
+        @content
+    @else if $orientation == portrait
       @media #{$MQ-PORTRAIT-TABLETS}
         @content
     @else if $orientation == landscape
