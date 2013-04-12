@@ -47,23 +47,28 @@ $GWF-SS-SQUADA-ONE: 'Squada One'
 $GWF-SS-WIRE-ONE: 'Wire One'
 
 // Font Family
-$FF-HELVETICA: 'Helvetica Neue', Helvetica, Arial
-$FF-PALATINO: Palatino, 'Palatino Linotype', 'Book Antiqua'
-$FF-TIMES: 'Times New Roman', Times
-$FF-MEIRYO: 'メイリオ', Meiryo
-$FF-HIRAGO3: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro W3', 'Hiragino Kaku Gothic ProN'
-$FF-HIRAMIN3: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro W3', 'Hiragino Mincho ProN'
-$FF-MSPGO: 'MS PGothic'
-$FF-MSMIN: 'ＭＳ 明朝'
+$FF-SS-HELVETICA: 'Helvetica Neue', Helvetica, Arial
+$FF-SS-PALATINO: Palatino, 'Palatino Linotype', 'Book Antiqua'
+$FF-SS-LUCIDA: 'Lucida Sans Unicode', 'Lucida Grande', Verdana
+$FF-S-TIMES: 'Times New Roman', Times
+$FF-G-MEIRYO: 'メイリオ', Meiryo
+$FF-G-HIRAGO3: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro W3', 'Hiragino Kaku Gothic ProN'
+$FF-M-HIRAMIN3: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro W3', 'Hiragino Mincho ProN'
+$FF-G-MSPGO: 'MS PGothic'
+$FF-M-MSMIN: 'ＭＳ 明朝'
 
-$BASE-FF-SANS: 'Lucida Grande', Verdana, $FF-HELVETICA
-$BASE-FF-SERIF: Georgia, $FF-TIMES
+$BASE-FF-SANS: $FF-SS-HELVETICA
+$BASE-FF-SERIF: Georgia, $FF-S-TIMES
+$BASE-FF-MONO: Menlo, Consolas, 'Courier New', Monaco
+$BASE-FF-GITHUB: Consolas, "Liberation Mono", Courier
 
 // for English
 $FF-SANS: $BASE-FF-SANS, sans-serif
 $FF-SERIF: $BASE-FF-SERIF, serif
-$FF-MONO: Menlo, Consolas, 'Courier New', Monaco, monospace
-$FF-PALA: $FF-PALATINO, $FF-SERIF
+$FF-MONO: $BASE-FF-MONO, monospace
+$FF-LUCIDA: $FF-SS-LUCIDA, $FF-SANS
+$FF-PALATINO: $FF-SS-PALATINO, $FF-SERIF
+$FF-GITHUB: $BASE-FF-GITHUB, monospace
 
 =x-ff-sans
   font-family: $FF-SANS
@@ -74,13 +79,21 @@ $FF-PALA: $FF-PALATINO, $FF-SERIF
 =x-ff-mono
   font-family: $FF-MONO
 
-=x-ff-pala
-  font-family: $FF-PALA
+=x-ff-lucida
+  font-family: $FF-LUCIDA
+
+=x-ff-palatino
+  font-family: $FF-PALATINO
+
+=x-ff-github
+  font-family: $FF-PALATINO
 
 // for Japanese
-$FF-GOTHIC: $BASE-FF-SANS, $FF-MEIRYO, $FF-HIRAGO3, $FF-MSPGO, sans-serif
-$FF-MINCHO: $GWF-S-PT-SERIF, $BASE-FF-SERIF, $FF-HIRAMIN3, $FF-MSMIN, serif
-$FF-PALAMIN: $FF-PALA, $FF-MINCHO
+$FF-GOTHIC: $BASE-FF-SANS, $FF-G-MEIRYO, $FF-G-HIRAGO3, $FF-G-MSPGO, sans-serif
+$FF-MINCHO: $GWF-S-PT-SERIF, $BASE-FF-SERIF, $FF-M-HIRAMIN3, $FF-M-MSMIN, serif
+$FF-LUCIGO: $FF-SS-LUCIDA, $FF-GOTHIC
+$FF-PALAMIN: $FF-SS-PALATINO, $FF-MINCHO
+$FF-GITGO: $BASE-FF-GITHUB, $FF-G-MEIRYO, $FF-G-HIRAGO3, $FF-G-MSPGO, monospace
 
 =x-ff-gothic
   font-family: $FF-GOTHIC
@@ -88,8 +101,14 @@ $FF-PALAMIN: $FF-PALA, $FF-MINCHO
 =x-ff-mincho
   font-family: $FF-MINCHO
 
+=x-ff-lucigo
+  font-family: $FF-LUCIGO
+
 =x-ff-palamin
   font-family: $FF-PALAMIN
+
+=x-ff-gitgo
+  font-family: $FF-GITGO
 
 
 // =============================================================================
