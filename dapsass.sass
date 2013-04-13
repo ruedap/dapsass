@@ -218,6 +218,16 @@ $X-REM-BASELINE: 10px / 1rem
   padding: 0
 
 
+=x-link-underline($color1, $color2: null, $opacity1: 0.5, $opacity2: 1.0)
+  @if $color2 == null
+    $color2: $color1
+  border-bottom: 1px solid rgba($color1, $opacity1)
+  text-decoration: none
+  &:hover
+    border-bottom: 1px solid rgba($color2, $opacity2)
+    text-decoration: none
+
+
 =x-triangle($triangle-size, $triangle-color, $triangle-direction)
   content: ''
   display: block
