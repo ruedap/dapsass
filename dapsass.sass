@@ -248,13 +248,21 @@ $X-REM-BASELINE: 10px / 1rem
     border-color: transparent $triangle-color transparent transparent
 
 
-=x-gradient-hr($c: #000)
-  +background-image(linear-gradient(left, rgba($c, 0), rgba($c, 0.1), rgba($c, 0)))
+=x-gradient-hr-tag($color: #000)
+  +background-image(linear-gradient(left, rgba($color, 0), rgba($color, 0.1), rgba($color, 0)))
   display: block
   height: 1px
   border: 0
   margin: 1em 0
   padding: 0
+
+=x-decoration-code-tag($bg-color: #f8f8f8, $border-color: #eaeaea)
+  margin: 0 2px
+  padding: 0px 5px
+  background-color: $bg-color
+  border: 1px solid $border-color
+  border-radius: 3px
+  white-space: nowrap
 
 
 // =============================================================================
