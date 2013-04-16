@@ -119,6 +119,7 @@ $MQ-PORTRAIT-TABLETS:  "#{$_target} (min-width: 768px) and (max-width: 979px)"
 $MQ-LANDSCAPE-TABLETS: "#{$_target} (min-width: 980px) and (max-width: 1199px)"
 $MQ-LARGE-DISPLAY:     "#{$_target} (min-width: 1200px) and (max-width: 1599px)"
 $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
+$MQ-RETINA-DISPLAY:    "#{$_target} (-webkit-min-device-pixel-ratio: 2), #{$_target} (min-resolution: 2dppx)"
 
 // excludes iPhone and iPad
 // $MQ-PHONES-TO-TABLETS: "#{$_target} (min-width: 481px) and (max-width: 767px)"
@@ -154,6 +155,9 @@ $MQ-X-LARGE-DISPLAY:   "#{$_target} (min-width: 1600px)"
       @content
   @else if $media == x-large
     @media #{$MQ-X-LARGE-DISPLAY}
+      @content
+  @else if $media == retina
+    @media #{$MQ-RETINA-DISPLAY}
       @content
 
 // shorthand for media-queries
