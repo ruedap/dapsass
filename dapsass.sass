@@ -415,3 +415,10 @@ $X-REM-BASELINE: 10px / 1rem
   +transition(all 0.4s ease)
   &:hover
     +opacity(1)
+
+
+=x-transition-color-hover($color1, $color2)
+  color: $color1
+  +transition(color 0.4s ease)
+  &:hover
+    color: $color2
