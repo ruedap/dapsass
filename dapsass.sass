@@ -232,19 +232,24 @@ $X-REM-BASELINE: 10px / 1rem
 
 
 =x-triangle($triangle-size, $triangle-color, $triangle-direction)
-  content: ''
+  content: ""
   display: block
   width: 0
   height: 0
   border: solid $triangle-size
   @if $triangle-direction == top
     border-color: $triangle-color transparent transparent transparent
+    border-color: $triangle-color rgba($triangle-color, 0) rgba($triangle-color, 0) rgba($triangle-color, 0)
   @if $triangle-direction == bottom
     border-color: transparent transparent $triangle-color transparent
+    border-color: rgba($triangle-color, 0) rgba($triangle-color, 0) $triangle-color rgba($triangle-color, 0)
   @if $triangle-direction == left
     border-color: transparent transparent transparent $triangle-color
+    border-color: rgba($triangle-color, 0) rgba($triangle-color, 0) rgba($triangle-color, 0) $triangle-color
   @if $triangle-direction == right
     border-color: transparent $triangle-color transparent transparent
+    border-color: rgba($triangle-color, 0) $triangle-color rgba($triangle-color, 0) rgba($triangle-color, 0)
+
 
 
 =x-gradient-hr-tag($color: #000)
