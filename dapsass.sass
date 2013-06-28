@@ -273,6 +273,11 @@ $X-REM-BASELINE: 10px / 1rem
   border-radius: 3px
   white-space: nowrap
 
+=x-placeholder
+  @each $prefix in "::-webkit-input", ":moz", "::-moz", ":-ms-input"
+    #{$prefix}-placeholder
+      @content
+
 
 // =============================================================================
 // keyframes
